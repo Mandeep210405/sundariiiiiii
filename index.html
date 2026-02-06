@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFEBEE 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            padding: 20px;
+        }
+
+        /* Main card container */
+        .card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(220, 53, 69, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative corner hearts */
+        .corner-heart {
+            position: absolute;
+            font-size: 24px;
+            color: #FFB6C1;
+        }
+
+        .corner-heart:nth-child(1) { top: 20px; left: 20px; }
+        .corner-heart:nth-child(2) { top: 20px; right: 20px; }
+        .corner-heart:nth-child(3) { bottom: 20px; left: 20px; }
+        .corner-heart:nth-child(4) { bottom: 20px; right: 20px; }
+
+        /* Title and text */
+        h1 {
+            margin-bottom: 25px;
+            color: #C2185B;
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .valentine-name {
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: #E91E63;
+            display: block;
+            margin: 15px 0 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .question {
+            font-size: 1.8rem;
+            color: #880E4F;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Button container */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0 20px;
+        }
+
+        /* Yes button */
+        #yes {
+            background: linear-gradient(to right, #E91E63, #C2185B);
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(232, 30, 99, 0.3);
+            letter-spacing: 1px;
+        }
+
+        #yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(232, 30, 99, 0.4);
+            background: linear-gradient(to right, #C2185B, #AD1457);
+        }
+
+        /* No button - gets smaller each click */
+        #no {
+            background: #F5F5F5;
+            color: #757575;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            letter-spacing: 1px;
+            min-width: 180px;
+        }
+
+        #no:hover {
+            background: #EEEEEE;
+            transform: translateY(-2px);
+        }
+
+        /* Success page */
+        .hidden {
+            display: none;
+        }
+
+        #page2 .success-title {
+            color: #E91E63;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            font-size: 1.4rem;
+            color: #616161;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Love image */
+        .love-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 25px auto;
+            border: 8px solid #FFF5F7;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .final-message {
+            font-size: 1.6rem;
+            color: #E91E63;
+            margin-top: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Heart row */
+        .hearts-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            font-size: 2rem;
+            color: #F06292;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .valentine-name {
+                font-size: 2.6rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            #yes, #no {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .love-image {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        /* Subtle fade in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Question -->
+    <div class="card" id="page1">
+        <!-- Decorative corner hearts -->
+        <div class="corner-heart">♥</div>
+        <div class="corner-heart">♥</div>
+        <div class="corner-heart">♥</div>
+        <div class="corner-heart">♥</div>
+        
+        <h1>
+            My Dearest
+            <span class="valentine-name">Sundarriii</span>
+            <div class="question">Will you be my Valentine?</div>
+        </h1>
+
+        <div class="buttons">
+            <button id="yes">YES, I WILL 💖</button>
+            <button id="no">NO</button>
+        </div>
+        
+        <div class="hearts-row">
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+        </div>
+    </div>
+
+    <!-- Page 2: Success -->
+    <div class="card hidden" id="page2">
+        <div class="corner-heart">♥</div>
+        <div class="corner-heart">♥</div>
+        <div class="corner-heart">♥</div>
+        <div class="corner-heart">♥</div>
+        
+        <div class="success-title">YES! 💝</div>
+        <p class="success-message">You've made me the happiest person in the world. This means everything to me.</p>
+
+        <!-- Beautiful romantic image -->
+        <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+             alt="Romantic moment" class="love-image">
+
+        <p class="final-message">I love you more than words can express</p>
+        
+        <div class="hearts-row">
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+            <span>♥</span>
+        </div>
+    </div>
+
+    <script>
+        let noClicks = 0;
+        const noMessages = [
+            "NO",
+            "Really? 😢",
+            "Think again...",
+            "Are you sure?",
+            "Please reconsider",
+            "Just click yes!",
+            "Pleeease? 💕",
+            "You're breaking my heart",
+            "I'll keep asking...",
+            "Final chance to say YES!"
+        ];
+
+        const noBtn = document.getElementById("no");
+        const yesBtn = document.getElementById("yes");
+        const page1 = document.getElementById("page1");
+        const page2 = document.getElementById("page2");
+
+        // Handle NO button clicks
+        noBtn.addEventListener("click", function() {
+            noClicks++;
+            
+            // Change button text based on click count
+            if (noClicks <= noMessages.length) {
+                noBtn.textContent = noMessages[noClicks - 1];
+                
+                // Make button smaller
+                const currentWidth = parseFloat(window.getComputedStyle(noBtn).width);
+                noBtn.style.width = (currentWidth * 0.85) + "px";
+                
+                // Make text smaller
+                const currentFontSize = parseFloat(window.getComputedStyle(noBtn).fontSize);
+                noBtn.style.fontSize = (currentFontSize * 0.9) + "px";
+                
+                // Make YES button bigger and more attractive
+                const yesFontSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+                yesBtn.style.fontSize = (yesFontSize * 1.1) + "px";
+                yesBtn.style.padding = "18px 45px";
+                
+                // Change YES button color to be more vibrant
+                yesBtn.style.background = "linear-gradient(to right, #FF4081, #E91E63)";
+                yesBtn.style.boxShadow = "0 10px 25px rgba(255, 64, 129, 0.4)";
+                
+                // Move NO button randomly
+                const x = Math.random() * 100 - 50;
+                const y = Math.random() * 100 - 50;
+                noBtn.style.transform = `translate(${x}px, ${y}px)`;
+                
+                // If max clicks reached, disable NO button
+                if (noClicks === noMessages.length) {
+                    setTimeout(() => {
+                        noBtn.disabled = true;
+                        noBtn.style.opacity = "0.5";
+                        noBtn.style.cursor = "not-allowed";
+                        noBtn.textContent = "Please choose YES 💖";
+                    }, 500);
+                }
+            }
+        });
+
+        // Handle YES button click
+        yesBtn.addEventListener("click", function() {
+            // Add a subtle click effect
+            yesBtn.style.transform = "scale(0.95)";
+            yesBtn.style.background = "linear-gradient(to right, #AD1457, #880E4F)";
+            
+            // Change the heart emoji
+            yesBtn.innerHTML = "YES! 💝";
+            
+            // Transition to success page
+            setTimeout(() => {
+                page1.classList.add("hidden");
+                page2.classList.remove("hidden");
+                
+                // Add romantic message in console
+                console.log("♥ She said YES! ♥");
+            }, 300);
+        });
+
+        // Reset NO button position when mouse leaves
+        noBtn.addEventListener("mouseleave", function() {
+            setTimeout(() => {
+                noBtn.style.transform = "translate(0, 0)";
+            }, 200);
+        });
+    </script>
+</body>
+</html>
